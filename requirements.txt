@@ -1,0 +1,6 @@
+streamlit
+folium
+streamlit-folium
+Pillow
+numpy
+onnxruntime>=1.20,<2

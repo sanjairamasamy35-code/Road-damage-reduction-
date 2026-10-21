@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "state": "Tamil Nadu",
+  "retrieved_on": "2026-10-19",
+  "sources": [
+    {
+      "title": "Tamil Nadu Districts",
+      "publisher": "Lok Bhavan, Tamil Nadu",
+      "url": "https://lokbhavan.tn.gov.in/districts-of-tamil-nadu/",
+      "use": "Official displayed district names and 38-district list"
+    },
+    {
+      "title": "Local Government Directory - Districts",
+      "publisher": "Ministry of Panchayati Raj, Government of India",
+      "url": "https://data.gov.in/resource/local-government-directory-lgd-districts",
+      "use": "Official district identifiers (LGD codes) were reviewed; RoadGuard IDs below use a stable local namespace so IDs remain independent of code-feed changes"
+    }
+  ],
+  "identifier_namespace": "TN-DIST-<UPPERCASE_SLUG>",
+  "identifier_note": "RoadGuard canonical IDs are local stable identifiers derived from official district names; they are not government-issued LGD codes.",
+  "districts": [
+    {"id":"TN-DIST-ARIYALUR","name":"Ariyalur","aliases":[]},
+    {"id":"TN-DIST-CHENGALPATTU","name":"Chengalpattu","aliases":[]},
+    {"id":"TN-DIST-CHENNAI","name":"Chennai","aliases":[]},
+    {"id":"TN-DIST-COIMBATORE","name":"Coimbatore","aliases":[]},
+    {"id":"TN-DIST-CUDDALORE","name":"Cuddalore","aliases":[]},
+    {"id":"TN-DIST-DHARMAPURI","name":"Dharmapuri","aliases":[]},
+    {"id":"TN-DIST-DINDIGUL","name":"Dindigul","aliases":[]},
+    {"id":"TN-DIST-ERODE","name":"Erode","aliases":[]},
+    {"id":"TN-DIST-KALLAKURICHI","name":"Kallakurichi","aliases":["Kallakuruchi"]},
+    {"id":"TN-DIST-KANCHEEPURAM","name":"Kancheepuram","aliases":["Kanchipuram"]},
+    {"id":"TN-DIST-KARUR","name":"Karur","aliases":[]},
+    {"id":"TN-DIST-KRISHNAGIRI","name":"Krishnagiri","aliases":[]},
+    {"id":"TN-DIST-MADURAI","name":"Madurai","aliases":[]},
+    {"id":"TN-DIST-MAYILADUTHURAI","name":"Mayiladuthurai","aliases":[]},
+    {"id":"TN-DIST-NAGAPATTINAM","name":"Nagapattinam","aliases":[]},
+    {"id":"TN-DIST-KANYAKUMARI","name":"Kanyakumari","aliases":["Kanniyakumari"]},
+    {"id":"TN-DIST-NAMAKKAL","name":"Namakkal","aliases":[]},
+    {"id":"TN-DIST-PERAMBALUR","name":"Perambalur","aliases":[]},
+    {"id":"TN-DIST-PUDUKOTTAI","name":"Pudukottai","aliases":["Pudukkottai"]},
+    {"id":"TN-DIST-RAMANATHAPURAM","name":"Ramanathapuram","aliases":[]},
+    {"id":"TN-DIST-RANIPET","name":"Ranipet","aliases":["Ranipettai"]},
+    {"id":"TN-DIST-SALEM","name":"Salem","aliases":[]},
+    {"id":"TN-DIST-SIVAGANGA","name":"Sivaganga","aliases":["Sivagangai"]},
+    {"id":"TN-DIST-TENKASI","name":"Tenkasi","aliases":[]},
+    {"id":"TN-DIST-THANJAVUR","name":"Thanjavur","aliases":[]},
+    {"id":"TN-DIST-THENI","name":"Theni","aliases":[]},
+    {"id":"TN-DIST-THIRUVALLUR","name":"Thiruvallur","aliases":["Tiruvallur"]},
+    {"id":"TN-DIST-THIRUVARUR","name":"Thiruvarur","aliases":["Tiruvarur"]},
+    {"id":"TN-DIST-THOOTHUKUDI","name":"Thoothukudi","aliases":["Tuticorin"]},
+    {"id":"TN-DIST-TIRUCHIRAPPALLI","name":"Tiruchirappalli","aliases":["Trichy"]},
+    {"id":"TN-DIST-TIRUNELVELI","name":"Tirunelveli","aliases":[]},
+    {"id":"TN-DIST-TIRUPATHUR","name":"Tirupathur","aliases":["Thirupathur"]},
+    {"id":"TN-DIST-TIRUPPUR","name":"Tiruppur","aliases":["Tirupur"]},
+    {"id":"TN-DIST-TIRUVANNAMALAI","name":"Tiruvannamalai","aliases":[]},
+    {"id":"TN-DIST-NILGIRIS","name":"The Nilgiris","aliases":["Nilgiris"]},
+    {"id":"TN-DIST-VELLORE","name":"Vellore","aliases":[]},
+    {"id":"TN-DIST-VILUPPURAM","name":"Viluppuram","aliases":["Villupuram"]},
+    {"id":"TN-DIST-VIRUDHUNAGAR","name":"Virudhunagar","aliases":[]}
+  ]
+}

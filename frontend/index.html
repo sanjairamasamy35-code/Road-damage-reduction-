@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#101b2d" />
+  <meta name="description" content="RoadGuard AI — community road safety reporting for Tamil Nadu." />
+  <title>RoadGuard AI — Cyber Cats</title>
+  <link rel="preconnect" href="https://unpkg.com" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#home" aria-label="RoadGuard home">
+  <span class="brand-mark">R</span>
+  <span>
+  <b>RoadGuard</b>
+  <small>AI · Tamil Nadu</small>
+  </span>
+  </a>
+    <div class="team-chip">
+  <span class="team-dot">
+  </span> DEXATHON 2K26 <b>·</b> Cyber Cats</div>
+    <nav aria-label="Main navigation">
+      <a class="nav-link active" href="#home">
+  <span>⌂</span> Overview</a>
+      <a class="nav-link" href="#map-section">
+  <span>◎</span> District map</a>
+      <a class="nav-link" href="#report-section">
+  <span>＋</span> Report damage</a>
+      <a class="nav-link" href="#history-section">
+  <span>▤</span> Report history</a>
+      <a class="nav-link" href="#track-section">
+  <span>⌕</span> Track a report</a>
+    </nav>
+    <div class="sidebar-note">
+  <span class="live-dot">
+  </span>
+  <div>
+  <b>Community powered</b>
+  <small>Every report helps make roads safer.</small>
+  </div>
+  </div>
+    <div class="sidebar-foot">ROAD SAFETY · BUILT FOR TAMIL NADU</div>
+  </aside>
+  <main class="main-shell" id="home">
+    <header class="topbar">
+  <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+  <div class="crumb">RoadGuard <span>/</span> Overview</div>
+  <div class="top-right">
+  <span class="status-pill">
+  <i>
+  </i> Service status <b id="api-status">Checking</b>
+  </span>
+  <div class="avatar">CC</div>
+  </div>
+  </header>
+    <section class="hero">
+  <div>
+  <div class="eyebrow">
+  <span class="spark">✳</span> SMARTER ROADS, SAFER JOURNEYS</div>
+  <h1>See a road issue?<br />
+  <em>Let’s get it moving.</em>
+  </h1>
+  <p>Report damage, see real district boundaries, and follow verified updates across Tamil Nadu.</p>
+  <a class="button button-light" href="#report-section">＋ &nbsp; Submit a report <span>→</span>
+  </a>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+  <div class="orbit orbit-one">
+  </div>
+  <div class="orbit orbit-two">
+  </div>
+  <div class="road-illustration">
+  <span class="road-line">
+  </span>
+  <span class="road-crack">
+  </span>
+  </div>
+  <div class="floating-pin">⌖</div>
+  <div class="hero-tag">
+  <b>38</b>
+  <span>districts<br />in registry</span>
+  </div>
+  </div>
+  <div class="hero-bottom">
+  <span>01 / COMMUNITY REPORTING</span>
+  <span>CYBER CATS <b>✳</b> DEXATHON 2K26</span>
+  </div>
+  </section>
+    <section class="stats-grid" aria-label="Report summary">
+  <article class="stat-card">
+  <div class="stat-top">
+  <span>Total reports</span>
+  <span class="stat-icon blue">▤</span>
+  </div>
+  <strong id="stat-total">—</strong>
+  <small>Submitted to RoadGuard</small>
+  </article>
+  <article class="stat-card">
+  <div class="stat-top">
+  <span>Open reports</span>
+  <span class="stat-icon amber">◷</span>
+  </div>
+  <strong id="stat-open">—</strong>
+  <small>Awaiting resolution</small>
+  </article>
+  <article class="stat-card">
+  <div class="stat-top">
+  <span>Verified closed</span>
+  <span class="stat-icon green">✓</span>
+  </div>
+  <strong id="stat-closed">—</strong>
+  <small>Independently verified</small>
+  </article>
+  <article class="stat-card accent-stat">
+  <div class="stat-top">
+  <span>District coverage</span>
+  <span class="stat-icon violet">⌖</span>
+  </div>
+  <strong>
+  <span id="stat-districts">—</span>
+  <small class="stat-unit">/ 38</small>
+  </strong>
+  <small>With valid map boundaries</small>
+  </article>
+  </section>
+    <section class="content-grid" id="map-section">
+  <article class="panel map-panel">
+  <div class="panel-head">
+  <div>
+  <div class="eyebrow muted">GEOGRAPHIC VIEW</div>
+  <h2>Tamil Nadu districts</h2>
+  <p>Verified GeoJSON boundaries from the project dataset.</p>
+  </div>
+  <span class="tiny-badge">
+  <i>
+  </i> Live data</span>
+  </div>
+  <div id="district-map" class="map-box">
+  <div class="map-loading">Loading district boundaries…</div>
+  </div>
+  <div class="map-legend">
+  <span>
+  <i class="legend-boundary">
+  </i> Available district boundary</span>
+  <span id="map-coverage">Loading coverage…</span>
+  </div>
+  <p class="map-data-note" id="map-gap-note">
+  </p>
+  </article>
+  <article class="panel quick-panel">
+  <div class="eyebrow muted">QUICK ACTION</div>
+  <h2>Help us spot<br />what needs fixing.</h2>
+  <p>Share the location and a photo. RoadGuard’s existing AI model can analyze supported road damage in your image.</p>
+  <div class="quick-line">
+  <span class="quick-icon">01</span>
+  <div>
+  <b>Pinpoint the issue</b>
+  <small>Choose a district and road.</small>
+  </div>
+  </div>
+  <div class="quick-line">
+  <span class="quick-icon">02</span>
+  <div>
+  <b>Add photo evidence</b>
+  <small>Optional · JPEG, PNG or WebP.</small>
+  </div>
+  </div>
+  <a class="button button-dark" href="#report-section">Start a report <span>→</span>
+  </a>
+  <div class="quick-foot">Reports enter the real project database.</div>
+  </article>
+  </section>
+    <section class="panel report-panel" id="report-section">
+  <div class="panel-head">
+  <div>
+  <div class="eyebrow muted">COMMUNITY CONTRIBUTION</div>
+  <h2>Report road damage</h2>
+  <p>Fields marked <b>*</b> are required. A photo is optional.</p>
+  </div>
+  <span class="form-index">01 <span>/ 01</span>
+  </span>
+  </div>
+  <form id="report-form">
+  <div class="form-grid">
+  <label>Road or street name <b>*</b>
+  <input name="road_name" required maxlength="160" placeholder="e.g. Anna Salai" />
+  </label>
+  <label>District <b>*</b>
+  <select name="district_id" required>
+  <option value="">Loading district registry…</option>
+  </select>
+  </label>
+  <label>Problem type <b>*</b>
+  <select name="problem_type" required>
+  <option value="">Select problem</option>
+  <option>Pothole</option>
+  <option>Crack</option>
+  <option>Broken Road</option>
+  <option>Other</option>
+  </select>
+  </label>
+  <label>Severity <b>*</b>
+  <select name="severity" required>
+  <option value="">Select severity</option>
+  <option>Low</option>
+  <option>Medium</option>
+  <option>High</option>
+  <option>Critical</option>
+  </select>
+  </label>
+  <label class="full-field">Landmark or location details <b>*</b>
+  <input name="location" required maxlength="200" placeholder="Nearby landmark, junction or area" />
+  </label>
+  <div class="coordinate-field">
+  <label>Latitude<input name="latitude" type="number" step="any" min="-90" max="90" placeholder="Optional" />
+  </label>
+  <label>Longitude<input name="longitude" type="number" step="any" min="-180" max="180" placeholder="Optional" />
+  </label>
+  <small>Coordinates must be entered together. No location is inferred from your browser.</small>
+  </div>
+  <label class="full-field">What did you notice? <b>*</b>
+  <textarea name="description" required maxlength="2000" rows="4" placeholder="Describe the issue and any safety concerns…">
+  </textarea>
+  </label>
+  <div class="upload-field full-field">
+  <div>
+  <b>Photo evidence <span class="optional">OPTIONAL</span>
+  </b>
+  <small>JPEG, PNG, WebP · up to 5 MB</small>
+  </div>
+  <label class="upload-box" for="photo">
+  <span class="upload-symbol">↥</span>
+  <span>
+  <b id="upload-label">Choose an image</b>
+  <small id="upload-hint">or drop a file here</small>
+  </span>
+  <input id="photo" type="file" name="photo" accept="image/jpeg,image/png,image/webp" />
+  </label>
+  <div id="photo-preview" class="photo-preview" hidden>
+  </div>
+  </div>
+  </div>
+  <div class="form-actions">
+  <div class="privacy-note">
+  <span>ⓘ</span> Submitted reports are visible in public history. Avoid personal information.</div>
+  <button class="button button-dark" type="submit" id="submit-button">Submit report <span>→</span>
+  </button>
+  </div>
+  <div class="form-message" id="form-message" role="status" aria-live="polite">
+  </div>
+  </form>
+  </section>
+    <section class="panel history-panel" id="history-section">
+  <div class="panel-head">
+  <div>
+  <div class="eyebrow muted">RECENT ACTIVITY</div>
+  <h2>Report history</h2>
+  <p>Records are fetched from the current RoadGuard SQLite database.</p>
+  </div>
+  <a href="#history-section" class="text-link" id="refresh-history">↻ Refresh</a>
+  </div>
+  <div class="filters">
+  <label>District<select id="filter-district">
+  <option value="">All districts</option>
+  </select>
+  </label>
+  <label>Problem<select id="filter-problem">
+  <option value="">All problems</option>
+  <option>Pothole</option>
+  <option>Crack</option>
+  <option>Broken Road</option>
+  <option>Other</option>
+  </select>
+  </label>
+  <label>Severity<select id="filter-severity">
+  <option value="">All severities</option>
+  <option>Low</option>
+  <option>Medium</option>
+  <option>High</option>
+  <option>Critical</option>
+  </select>
+  </label>
+  <label>Status<select id="filter-status">
+  <option value="">All statuses</option>
+  </select>
+  </label>
+  </div>
+  <div class="table-wrap">
+  <table>
+  <thead>
+  <tr>
+  <th>Report</th>
+  <th>Location</th>
+  <th>Issue</th>
+  <th>Severity</th>
+  <th>Status</th>
+  <th>Submitted</th>
+  </tr>
+  </thead>
+  <tbody id="report-rows">
+  <tr>
+  <td colspan="6" class="table-state">Loading reports…</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  <div class="table-footer">
+  <span id="report-count">Loading…</span>
+  <button class="text-link" id="load-more" hidden>Load more ↓</button>
+  </div>
+  </section>
+    <section class="panel track-panel" id="track-section">
+  <div class="track-intro">
+  <div>
+  <div class="eyebrow muted">FOLLOW THE JOURNEY</div>
+  <h2>Track a report</h2>
+  <p>Enter the report ID you received after submission to view the current status and recorded history.</p>
+  </div>
+  <div class="track-symbol">↗</div>
+  </div>
+  <form id="track-form" class="track-form">
+  <input id="track-id" required maxlength="64" placeholder="Paste report ID" />
+  <button class="button button-dark" type="submit">Look up <span>→</span>
+  </button>
+  </form>
+  <div id="track-result" class="track-result" aria-live="polite">
+  </div>
+  </section>
+    <footer>
+  <a class="brand footer-brand" href="#home">
+  <span class="brand-mark">R</span>
+  <span>
+  <b>RoadGuard</b>
+  <small>AI · Tamil Nadu</small>
+  </span>
+  </a>
+  <span>DEXATHON 2K26 <b>·</b> CYBER CATS</span>
+  <span>Built to make every journey safer.</span>
+  </footer>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
+  </script>
+  <script src="config.js">
+  </script>
+  <script src="app.js">
+  </script>
+</body>
+  </html>
